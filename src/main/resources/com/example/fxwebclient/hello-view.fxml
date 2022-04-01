@@ -1,16 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.fxwebclient.HelloController">
+<?import org.controlsfx.control.WorldMapView?>
+<BorderPane fx:id="border1" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fxwebclient.HelloController">
+    <center>
+<VBox alignment="CENTER" spacing="20.0">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
+    <WorldMapView fx:id="map" countrySelectionMode="SINGLE" onMouseClicked="#selectedCountry"/>
+    <TextField fx:id="country" promptText="Country name" />
+    <TextField fx:id="city" promptText="City name" />
+         <TextField fx:id="rate" layoutX="30.0" layoutY="30.0" promptText="Get rate for currency" />
+         <FlowPane alignment="TOP_CENTER" columnHalignment="RIGHT" hgap="15.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="0.0" prefWidth="200.0" prefWrapLength="0.0" rowValignment="BOTTOM">
+            <children>
+         <Button onMouseClicked="#loadWebView" text="Go to wiki" styleClass="btn-primary"/>
+          <Button onMouseClicked="#showValues" text="Get information" styleClass="btn-primary"/>
+            </children>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+         </FlowPane>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick" styleClass="btn-success"/>
 </VBox>
+    </center>
+   <top>
+      <FlowPane alignment="CENTER" hgap="40.0" prefHeight="42.0" prefWidth="240.0" BorderPane.alignment="CENTER"  style="-fx-background-color: #B3D6CE">
+         <children>
+            <Label fx:id="displayWeather" text="" />
+            <Label fx:id="displayNBP" text="" />
+            <Label fx:id="displayRate" layoutX="82.0" layoutY="22.0" text="" />
+         </children>
+      </FlowPane>
+   </top>
+</BorderPane>
